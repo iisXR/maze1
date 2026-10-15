@@ -14,20 +14,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.6.0/dist/aframe-extras.min.js"></script>
-		<script src="https://unpkg.com/aframe-mirror-component/dist/aframe-mirror-component.min.js"></script>
-		<script type="text/javascript" src="depricated/jscamera-cube-env.js"></script>
+		<script type="text/javascript" src="depricated/js/camera-cube-env.js"></script>
         <!-- <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.0/dist/aframe-extras.min.js"></script>             
 			<script type="text/javascript" src="js/webxr.js"></script>
-        <script type="text/javascript" src="depricated/jscamera-cube-env.js"></script>
+
         <script type="text/javascript" src="js/animation-mixer.js"></script>
         <script type="text/javascript" src="js/hand-controls.js"></script> -->
 
         
 
     </head>
-   
-]
+    <body>
             <a-scene
   inspector="url: https://cdn.jsdelivr.net/gh/c-frame/aframe-editor@1.7.x/dist/aframe-editor.min.js">
           <!-- Assets  the scr= for "MainMesh" and "sky" can be updated with your own files-->
@@ -46,15 +44,15 @@
             <!-- Entities -->
             <!-- Note for reflections: To change rflections Repalace "g_cube" with "soft_city","soft_landscape" or "soft_room"-->
             
-			<a-entity id="#MainMesh" animation-mixer="clip: *; loop: forever; clampWhenFinished: true;" gltf-model="#MainMesh" scale="1 1 1" position= "0 0 0" visible="true" shadow="cast: true" 
-            geometry="" cube-env-map="path: /env/g_cube/; extension: jpg; reflectivity: 0.99;"></a-entity>
+			<a-entity id="MainMesh" animation-mixer="clip: *; loop: forever; clampWhenFinished: true;" gltf-model="#MainMesh" scale="1 1 1" position= "0 0 0" visible="true" shadow="cast: true" 
+            geometry="" camera-cube-env="path: /env/soft_city/; extension: jpg; reflectivity: 0.99;"></a-entity>
             <a-entity id="Navmesh" nav-mesh gltf-model="#navmesh" visible="false"></a-entity>
 			
 				
 		<!-- <a-entity ocean position="0 0.12611 0" rotation="-89.48855914809789 179.9998479605043 179.9998479605043" scale="4 4 4"></a-entity> -->
       <!-- Camera AKA PLAYER-->
            
-                <a-entity id="player" movement-controls="constrainToNavMesh: true;" navigator="cameraRig: #cameraRig; cameraHead: #head; collisionEntities: .collision; ignoreEntities: .clickable" position="0 0 0" rotation="0 0 0">
+                <a-entity id="cameraRig" movement-controls="constrainToNavMesh: true;" navigator="cameraRig: #cameraRig; cameraHead: #head; collisionEntities: .collision; ignoreEntities: .clickable" position="0 0 0" rotation="0 0 0">
         <!-- camera -->
         <a-entity id="head" camera="active: true" position="0 1 0" look-controls="pointerLockEnabled: true; reverseMouseDrag: true" ></a-entity>
               <!-- Left Controller -->
@@ -62,8 +60,6 @@
               <!-- Right Controller -->
               <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #15ACCF" laser-controls raycaster="showLine: true; far: 10; interval: 0; objects: .clickable, a-link;" line="color: #7cfc00; opacity: 0.5" visible="true"></a-entity>
       </a-entity>
-      
-</a-entity>
       
 
             <!-- Lights -->
